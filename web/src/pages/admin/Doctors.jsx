@@ -5,7 +5,7 @@ import { Table, message } from "antd";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
-  //getUsers
+  //getDoctorss
   const getDoctors = async () => {
     try {
       const res = await axios.get("/api/v1/admin/getAllDoctors", {
@@ -20,7 +20,7 @@ const Doctors = () => {
       console.log(error);
     }
   };
-  //handle account 
+  //handle account  status
 const handleAccountState =async (record,status) =>{
   try {
     const res = await axios.post('/api/v1/admin/changeAccountStatus',

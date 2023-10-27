@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const doctorSchema = new mongoose.Schema(
   {
     userId: {
-      type: String, // mongoose.Schema.Types.ObjectId, // for considiration Consider
+      type: String,
     },
     firstName: {
       type: String,
