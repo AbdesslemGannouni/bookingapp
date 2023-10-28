@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
   const Navigate = useNavigate();
-
+console.log(user)
   //logout function
 
   const handleLogout = () => {
@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
   //redering menu list
   const SidebarMenu = user?.isAdmin
     ? adminMenu
-    : user?.idDoctor
+    : user?.isDoctor
     ? doctorMenu
     : userMenu;
 

@@ -19,13 +19,13 @@ const Profile = () => {
     try {
       dispatch(showLoading());
       const res = await axios.post(
-        "/api/v1/user/updateProfile",
+        "/api/v1/doctor/updateProfile",
         {
           ...values,
           userId: user._id,
           timing: [
-            moment(values.timings[0]).format("HH:mm"),
-            moment(values.timings[1]).format("HH:mm"),
+            moment(values.timing[0]).format("HH:mm"),
+            moment(values.timing[1]).format("HH:mm"),
           ],
         },
         {
@@ -72,6 +72,27 @@ const Profile = () => {
     getDoctorInfo();
     //eslint-disable-next-line
   }, []);
+  console.log("doctor", doctor);
+  //
+  if (!doctor) return <div>loading</div>;
+  const initialValues = {
+   /* firstName: doctor.firstName,
+    lastName: doctor.lastName,
+    phone: doctor.phone,
+    email: doctor.email,
+    website : doctor.website,
+    address : doctor.address,
+    specialization : doctor.specialization,
+    experience: doctor.experience,
+    feesPerConsultation: doctor.feesPerConsultation,*/
+   // timing : doctor.timing,
+  /* timing: [
+    moment(values.timing[0]).format("HH:mm"),
+    moment(values.timing[1]).format("HH:mm"),
+  ],*/
+  ...doctor,
+  timing:[]
+  };
 
   return (
     <Layout>
@@ -80,14 +101,8 @@ const Profile = () => {
         <Form
           layout="vertical"
           onFinish={handleFinish}
+          initialValues={initialValues || {}}
           className="m-3"
-          initialValues={{
-            ...doctor,
-            timings:[
-              moment(doctor.timings[0]),("HH:mm"),
-              moment(doctor.timings[1]),("HH:mm"),
-            ]
-          }}
         >
           <h5 className="">Personal Details :</h5>
           <Row gutter={20}>
