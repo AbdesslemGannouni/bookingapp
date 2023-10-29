@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/RegisterStyless.css";
 import { Form, Button, Input, message } from "antd";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,7 +17,7 @@ const Register = () => {
       const res = await axios.post("/api/v1/user/register", values);
       dispatch(hideLoading());
       if (res.data.success) {
-        message.success("register successfully ");
+        message.success("Register Successfully ");
         navigate("/login");
       } else {
         message.error(res.data.message);
@@ -26,7 +25,7 @@ const Register = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("somethin went wrong");
+      message.error("Somethin Went Wrong");
     }
   };
 
@@ -37,7 +36,7 @@ const Register = () => {
         onFinish={onFinishHandler}
         className="register-form"
       >
-        <h3 className="text-center">Register form</h3>
+        <h3 className="text-center">Register</h3>
 
         <Form.Item label="First Name" name="firstName">
           <Input type="text" required />

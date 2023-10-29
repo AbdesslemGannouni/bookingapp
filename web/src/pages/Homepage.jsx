@@ -6,14 +6,17 @@ import DoctorList from "../components/DoctorList";
 
 const Homepage = () => {
   const [doctors, setDoctors] = useState([]);
+  console.log(doctors)
   // Login user data
   const getUserData = async () => {
     try {
       const res = await axios.get("/api/v1/user/getAllDoctors", {
+
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       });
+      console.log('res' ,res)
       if (res.data.success) {
         setDoctors(res.data.data);
       }
